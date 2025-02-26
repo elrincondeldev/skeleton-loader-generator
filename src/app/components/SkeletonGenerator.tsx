@@ -37,6 +37,28 @@ const SkeletonGenerator = () => {
           )
         : null;
 
+      // Handle table rows
+      if (element.name === "tr") {
+        return (
+          <div key={index} className="flex items-center w-full border-b border-gray-200 py-4">
+            {Array(8).fill(0).map((_, i) => (
+              <div key={i} className="flex-1 px-4">
+                <div className="h-4 bg-gray-300 rounded w-[85%]"></div>
+              </div>
+            ))}
+          </div>
+        );
+      }
+
+      // Handle table cells
+      if (element.name === "td") {
+        return (
+          <div key={index} className="flex-1 px-4">
+            <div className="h-4 bg-gray-300 rounded w-[85%]"></div>
+          </div>
+        );
+      }
+
       if (element.name === "p") {
         return (
           <div key={index} className="space-y-2">
@@ -47,13 +69,13 @@ const SkeletonGenerator = () => {
         );
       }
 
-      if (element.name === "img") {
-        const width = element.attribs?.width || "400";
-        const height = element.attribs?.height || "300";
+      if (element.name === "img" || element.name === "Image") {
+        const width = element.attribs?.width || "20";
+        const height = element.attribs?.height || "20";
         return (
           <div
             key={index}
-            className={`h-[${height}px] w-[${width}px] bg-gray-300 rounded`}
+            className={`h-[${height}px] w-[${width}px] bg-gray-300 rounded-full`}
           />
         );
       }
@@ -64,6 +86,23 @@ const SkeletonGenerator = () => {
 
       if (element.name === "button") {
         return <div key={index} className="h-10 w-24 bg-gray-300 rounded" />;
+      }
+
+      // Handle status badges (spans with specific classes)
+      if (element.name === "span" && element.attribs?.className?.includes("rounded-md")) {
+        return (
+          <div key={index} className="w-20 h-6 bg-gray-300 rounded-md" />
+        );
+      }
+
+      // Handle flex containers with specific classes
+      if (element.name === "div" && element.attribs?.className?.includes("flex items-center")) {
+        return (
+          <div key={index} className="flex items-center gap-2">
+            <div className="h-5 w-5 bg-gray-300 rounded-full" />
+            <div className="h-4 w-24 bg-gray-300 rounded" />
+          </div>
+        );
       }
 
       return (
@@ -230,7 +269,6 @@ Example:
           </div>
         </section>
       </div>
-      
     </main>
   );
 };
