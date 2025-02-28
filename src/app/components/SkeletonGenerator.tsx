@@ -417,7 +417,7 @@ const SkeletonGenerator = () => {
   };
 
   return (
-    <main className="min-h-screen grid grid-rows-[auto_1fr] px-4 pb-20 md:pb-0 sm:px-8 md:px-12 lg:px-20 gap-8 sm:gap-12 lg:gap-16 font-[family-name:var(--font-geist-sans)]">
+    <main className="min-h-screen grid grid-rows-[auto_1fr] pb-20 md:pb-0 sm:px-8 md:px-12 lg:px-20 gap-8 sm:gap-12 lg:gap-16 font-[family-name:var(--font-geist-sans)]">
       <Info />
       <div className="flex flex-col gap-6 sm:gap-8 w-full max-w-7xl mx-auto">
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
