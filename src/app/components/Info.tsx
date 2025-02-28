@@ -10,7 +10,7 @@ function Info() {
         Generate a skeleton loader with only a component
       </p>
       <a
-        href="https://github.com/yourusername/skeleton-loader-generator"
+        href="https://github.com/elrincondeldev/skeleton-loader-generator"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 border-2 border-gray-400 text-gray-600 rounded-lg font-medium hover:border-gray-800 transition-colors text-sm sm:text-base"
