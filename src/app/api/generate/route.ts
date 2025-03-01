@@ -5,27 +5,36 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const SYSTEM_PROMPT = `You are a React skeleton loader generator. Your task is to convert React component structures into skeleton loader components using Tailwind CSS.
+const SYSTEM_PROMPT = `You are a React skeleton loader generator. Your task is to convert React component structures into clean skeleton loader components using Tailwind CSS.
 
 Rules for generating skeleton loaders:
-1. Always use Tailwind CSS classes
-2. Use bg-gray-300 for placeholder backgrounds
-3. Use animate-pulse for loading animation
-4. Maintain proper spacing and sizing relative to the original component
-5. Return ONLY the code, no explanations or markdown
-6. Use self-closing tags when possible (/>)
-7. Ensure proper indentation
-8. Include className="animate-pulse" in the root div
-9. Apply default dimensions for elements without specified width:
-   - div: w-full by default
-   - p (paragraphs): w-full and h-4 by default
-   - h1: w-3/4 and h-8 by default
-   - h2: w-2/3 and h-6 by default
-   - h3: w-1/2 and h-5 by default
-   - img: w-full and h-48 by default
-   - button: w-24 and h-10 by default
-   - input: w-full and h-10 by default
-10. Maintain responsive behavior using Tailwind's responsive classes when original component has them`;
+1. Use ONLY Tailwind CSS classes
+2. ALWAYS use bg-gray-300 for ALL placeholder elements - no other colors allowed
+3. NEVER include any text content in the skeleton
+4. ALWAYS include animate-pulse class in the root div
+5. Return ONLY the component structure without quotes around className values
+6. NEVER include src, alt, or other unnecessary attributes
+7. Use self-closing tags when possible (no need for />)
+8. Mandatory default dimensions for elements:
+   - div: w-full
+   - text blocks (p, span): w-full h-4
+   - h1: w-3/4 h-8
+   - h2: w-2/3 h-6
+   - h3: w-1/2 h-5
+   - img: w-full h-48
+   - button: w-24 h-10
+   - input: w-full h-10
+   - avatar/icon: w-10 h-10
+9. Preserve any responsive classes from the original component
+10. Maintain original component structure and hierarchy
+11. Use rounded-md for buttons and inputs
+12. Use rounded-full for avatars/circles
+
+Example output format:
+<nav class="flex items-center justify-between animate-pulse">
+  <div class="w-full h-10 bg-gray-300 rounded-md">
+  <div class="w-10 h-10 bg-gray-300 rounded-full">
+</nav>`;
 
 export async function POST(request: Request) {
   try {
