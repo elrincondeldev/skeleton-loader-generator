@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦴 React Skeleton Loader Generator
 
-## Getting Started
+Un generador automático de componentes skeleton loader para React utilizando Tailwind CSS y OpenAI.
 
-First, run the development server:
+## 📝 Descripción
 
+Este proyecto proporciona una API que convierte automáticamente estructuras de componentes React en sus correspondientes skeleton loaders utilizando Tailwind CSS. Utiliza la API de OpenAI para generar loaders que mantienen la estructura y el diseño del componente original.
+
+## ✨ Características
+
+- Generación automática de skeleton loaders
+- Uso de Tailwind CSS para los estilos
+- Animación de pulso incluida por defecto
+- Dimensiones predeterminadas inteligentes para elementos comunes
+- Mantenimiento de clases responsive
+- Integración con OpenAI
+
+## 🚀 Configuración
+
+1. Clona el repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/elrincondeldev/skeleton-loader-generator
+cd skeleton-loader-generator
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```bash
+npm install
+# o
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configura las variables de entorno:
+Crea un archivo `.env` en la raíz del proyecto:
+```env
+OPENAI_API_KEY=tu-api-key-de-openai
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+# o
+yarn dev
+```
 
-## Learn More
+## 🔧 Uso
 
-To learn more about Next.js, take a look at the following resources:
+Para generar un skeleton loader, realiza una petición POST a `/api/generate` con la estructura del componente:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```javascript
+const response = await fetch('/api/generate', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    component: `
+      <div className="p-4">
+        <h1>Título Principal</h1>
+        <p>Contenido del párrafo</p>
+        <button>Click me</button>
+      </div>
+    `
+  })
+});
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+const { skeletonCode } = await response.json();
+```
 
-## Deploy on Vercel
+## 📋 Reglas de Generación
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El generador sigue estas reglas para crear skeleton loaders consistentes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Utiliza exclusivamente clases de Tailwind CSS
+2. Usa `bg-gray-300` para los fondos de placeholder
+3. Incluye `animate-pulse` para la animación de carga
+4. Mantiene el espaciado y dimensiones relativas al componente original
+5. Dimensiones predeterminadas para elementos sin ancho especificado:
+   - div: `w-full`
+   - párrafos: `w-full h-4`
+   - h1: `w-3/4 h-8`
+   - h2: `w-2/3 h-6`
+   - h3: `w-1/2 h-5`
+   - img: `w-full h-48`
+   - button: `w-24 h-10`
+   - input: `w-full h-10`
+
+## 🛠️ Tecnologías
+
+- Next.js
+- React
+- Tailwind CSS
+- OpenAI API
+- TypeScript
+
+## 📄 Licencia
+
+MIT
+
+## 👥 Contribución
+
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría realizar.

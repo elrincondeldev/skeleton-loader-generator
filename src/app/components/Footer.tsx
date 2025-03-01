@@ -1,12 +1,16 @@
-function Footer() {
+import React from "react";
+
+const Footer: React.FC = () => {
   return (
-    <footer className="absolute bottom-5 left-0 right-0 text-center text-gray-800 z-50">
-      Made with ❤️ by{" "}
-      <a href="https://www.instagram.com/elrincondeldev/" target="_blank">
-        El Rincón Del Dev
-      </a>
+    <footer className="w-full py-6 mt-auto border-t border-gray-200 bg-white">
+      <p className="text-center text-gray-800">
+        Made with ❤️ by{" "}
+        <a href="https://www.instagram.com/elrincondeldev/" target="_blank">
+          El Rincón Del Dev
+        </a>
+      </p>
     </footer>
   );
-}
+};
 
 export default Footer;

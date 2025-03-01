@@ -3,11 +3,12 @@ import Github from "./icons/Github";
 function Info() {
   return (
     <section className="flex flex-col items-center justify-center px-4 mt-8 text-center">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+      <h1 className="text-3xl sm:text-[3rem] md:text-[5rem] md:leading-[5rem] font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
         Skeleton Loaders React
       </h1>
       <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-xl sm:max-w-2xl">
-        Generate a skeleton loader with only a component
+        Generate a skeleton loader with only a component. All snippets are
+        generated with Tailwind CSS.
       </p>
       <a
         href="https://github.com/elrincondeldev/skeleton-loader-generator"
