@@ -2,7 +2,7 @@ import Github from "./icons/Github";
 
 function Info() {
   return (
-    <section className="flex flex-col items-center justify-center px-4 mt-8 text-center">
+    <section className="flex flex-col items-center justify-center px-4 mt-8 mb-16 text-center">
       <h1 className="text-3xl sm:text-[3rem] md:text-[5rem] md:leading-[5rem] font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
         Skeleton Loaders React
       </h1>
