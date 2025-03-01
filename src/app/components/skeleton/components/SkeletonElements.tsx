@@ -21,6 +21,36 @@ export const BlockElementSkeleton: React.FC<SkeletonProps & { children?: React.R
   </div>
 );
 
+export const TableSkeleton: React.FC<{ rows?: number; columns?: number }> = ({ 
+  rows = 5, 
+  columns = 8 
+}) => (
+  <div className="w-full overflow-x-auto animate-pulse">
+    <table className="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          {[...Array(columns)].map((_, i) => (
+            <th key={`th-${i}`} className="py-3 px-4">
+              <div className="h-4 w-24 bg-gray-300 rounded" />
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-gray-200">
+        {[...Array(rows)].map((_, rowIndex) => (
+          <tr key={`row-${rowIndex}`}>
+            {[...Array(columns)].map((_, colIndex) => (
+              <td key={`cell-${rowIndex}-${colIndex}`} className="py-3 px-4">
+                <div className="h-4 w-20 bg-gray-300 rounded" />
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
 export const NavSkeleton: React.FC = () => (
   <div className="w-full flex items-center justify-between p-4 border-b border-gray-200 animate-pulse">
     <div className="h-8 w-32 bg-gray-300 rounded" />
