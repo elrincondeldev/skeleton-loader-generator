@@ -27,21 +27,21 @@ export const TableSkeleton: React.FC<{ rows?: number; columns?: number }> = ({
 }) => (
   <div className="w-full overflow-x-auto animate-pulse">
     <table className="min-w-full divide-y divide-gray-200">
-      <thead>
+      <thead className="bg-gray-50">
         <tr>
           {[...Array(columns)].map((_, i) => (
-            <th key={`th-${i}`} className="py-3 px-4">
+            <th key={`th-${i}`} className="py-3 px-4 text-left">
               <div className="h-4 w-24 bg-gray-300 rounded" />
             </th>
           ))}
         </tr>
       </thead>
-      <tbody className="divide-y divide-gray-200">
+      <tbody className="bg-white divide-y divide-gray-200">
         {[...Array(rows)].map((_, rowIndex) => (
-          <tr key={`row-${rowIndex}`}>
+          <tr key={`row-${rowIndex}`} className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
             {[...Array(columns)].map((_, colIndex) => (
-              <td key={`cell-${rowIndex}-${colIndex}`} className="py-3 px-4">
-                <div className="h-4 w-20 bg-gray-300 rounded" />
+              <td key={`cell-${rowIndex}-${colIndex}`} className="py-3 px-4 whitespace-nowrap">
+                <div className={`h-4 ${colIndex === columns - 1 ? 'w-32' : 'w-20'} bg-gray-300 rounded`} />
               </td>
             ))}
           </tr>

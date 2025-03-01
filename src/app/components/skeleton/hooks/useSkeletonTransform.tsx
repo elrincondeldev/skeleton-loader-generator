@@ -8,6 +8,7 @@ import {
   NavSkeleton,
   CardSkeleton,
   AvatarWithTextSkeleton,
+  TableSkeleton,
 } from '../components/SkeletonElements';
 
 export const useSkeletonTransform = (reactComponent: string) => {
@@ -35,6 +36,11 @@ export const useSkeletonTransform = (reactComponent: string) => {
       // Handle special cases
       if (element.name === "nav") {
         return <NavSkeleton key={`nav-${index}`} />;
+      }
+
+      if (element.name === "table") {
+        // For tables, we'll use a fixed number of columns based on common use cases
+        return <TableSkeleton key={`table-${index}`} columns={8} rows={5} />;
       }
 
       if (element.name === "div" && element.attribs?.className?.includes("card")) {
